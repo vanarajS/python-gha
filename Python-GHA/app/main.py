@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from app.routes import router
+from .routes import router   # ← dot matters
 
-app = FastAPI(title="Todo App")
-
+app = FastAPI()
 app.include_router(router)
