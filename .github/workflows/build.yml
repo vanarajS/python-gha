@@ -3,7 +3,7 @@ name: Python CI
 on: [ push, pull_request]
 
 jobs:
-  test:
+  Backend-CI:
     runs-on: ubuntu-latest
 
     steps: 
@@ -34,3 +34,17 @@ jobs:
       run: |
         ruff check app/
 
+  frontend-CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install & Lint
+        run: |
+          cd frontend
+          npm install
+          npm run lint
