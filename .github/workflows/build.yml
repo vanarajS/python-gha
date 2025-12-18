@@ -22,7 +22,7 @@ jobs:
     - name: Install requirement
       working-directory: Python-GHA
       run: |
-        pip install -r ./Python-GHA/requirements.txt
+        pip install -r requirements.txt
       
     - name: Run pytest
       working-directory: Python-GHA
