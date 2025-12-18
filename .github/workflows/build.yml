@@ -44,7 +44,7 @@ jobs:
           node-version: '20'
       
       - name: Install & Lint
-        working-directory: Python-GHA
+        working-directory: Python-GHA/frontendc
         run: |
           npm install
           npm run lint
