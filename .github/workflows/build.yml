@@ -19,13 +19,13 @@ jobs:
       run: 
         ls -lrth .
 
-    - name: Install requirement
+    - name: Install requirements
       working-directory: Python-GHA
       run: |
         pip install -r requirements.txt
-      
+
     - name: Run pytest
-      # working-directory: Python-GHA
+      working-directory: Python-GHA
       run: |
         PYTHONPATH=. pytest
    
