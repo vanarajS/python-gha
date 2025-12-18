@@ -1,41 +1,28 @@
-import { useEffect, useState } from "react"
-import { getTodos, addTodo } from "./api"
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [task, setTask] = useState("")
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    loadTodos()
-  }, [])
-
-  async function loadTodos() {
-    const data = await getTodos()
-    setTodos(data)
-  }
-
-  async function handleAdd() {
-    if (!task) return
-    await addTodo(task)
-    setTask("")
-    loadTodos()
-  }
+    // Replace with your production URL later in CI/CD
+    fetch('http://localhost:8000/products')
+      .then(res => res.json())
+      .then(data => setProducts(data))
+      .catch(err => console.error("Error fetching products:", err));
+  }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Todo App</h1>
-      <input
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="New task"
-      />
-      <button onClick={handleAdd}>Add</button>
-
-      <ul>
-        {todos.map((t, i) => (
-          <li key={i}>{t.task}</li>
+    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+      <h1>My Practice Shop</h1>
+      <div style={{ display: 'grid', gap: '10px' }}>
+        {products.map(product => (
+          <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px' }}>
+            <h3>{product.name}</h3>
+            <p>${product.price}</p>
+            <button>Add to Cart</button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
