@@ -28,8 +28,9 @@ jobs:
       working-directory: Python-GHA
       run: |
         PYTHONPATH=. pytest
-        
+
     - name: Linting
       working-directory: Python-GHA
       run: |
         ruff check app/
+
