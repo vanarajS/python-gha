@@ -42,6 +42,11 @@ jobs:
       run: | 
         docker build -t myapp:v1 .
 
+    - name: Docker push 
+      working-directory: Python-GHA/app
+      run: | 
+        docker push vanaraj/python:v1
+
   # frontend-CI:
   #   runs-on: ubuntu-latest
   #   steps:
