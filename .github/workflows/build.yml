@@ -15,9 +15,9 @@ jobs:
       with: 
         python-version: '3.11'
 
-    - name: ls -l
-      run: 
-        ls -lrth .
+    # - name: ls -l
+    #   run: 
+    #     ls -lrth .
 
     - name: Install requirements
       working-directory: Python-GHA/app
@@ -38,7 +38,7 @@ jobs:
       uses: docker/setup-buildx-action@v3
     
     - name: Build docker images
-      working-directory: Python-GHA/app
+      working-directory: Python-GHA
       run: | 
         docker build -t myapp:v1 .
 
