@@ -40,7 +40,7 @@ jobs:
     - name: Build docker images
       working-directory: Python-GHA
       run: | 
-        docker build -t myapp:v1
+        docker build -t myapp:v1 ./app
 
   frontend-CI:
     runs-on: ubuntu-latest
