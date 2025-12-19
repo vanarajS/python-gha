@@ -20,19 +20,19 @@ jobs:
         ls -lrth .
 
     - name: Install requirements
-      working-directory: Python-GHA
+      working-directory: Python-GHA/app
       run: |
         pip install -r requirements.txt
 
     - name: Run pytest
-      working-directory: Python-GHA
+      working-directory: Python-GHA/app
       run: |
         PYTHONPATH=. pytest
 
     - name: Linting
-      working-directory: Python-GHA
+      working-directory: Python-GHA/app
       run: |
-        ruff check app/
+        ruff check .
 
     - name: Set up docker buildx
       uses: docker/setup-buildx-action@v3
