@@ -64,11 +64,11 @@ jobs:
       run: | 
         docker run -d -p 8000:8000 --name myrunningapp myapp:v1
         sleep 10
-        curl -f http://localhost:8000/docs || ( echo "Application not started" && exit 1 )
+        curl -f http://localhost:8000/docs || ( echo "Application not started" && docker logs $CONTAINER_ID && exit 1 )
         docker stop myrunningapp
         docker rm myrunningapp
 
-    - name: Docker push 
+    - name: Docker push
       working-directory: Python-GHA/app
       run: | 
         docker push vanaraj/python:v1
