@@ -54,6 +54,20 @@ jobs:
       run: | 
         docker tag myapp:v1 vanaraj/python:v1
 
+    - name: Docker images list
+      working-directory: Python-GHA/app
+      run: | 
+        docker images
+ 
+    - name: Docker run test
+      working-directory: Python-GHA/app
+      run: | 
+        docker run -d -p 8000:8000 --name myrunningapp myapp:v1
+        sleep 10
+        curl -f http://localhost:8000/docs || ( echo "Application not started" && exit 1 )
+        docker stop myrunningapp
+        docker rm myrunningapp
+
     - name: Docker push 
       working-directory: Python-GHA/app
       run: | 
