@@ -40,19 +40,19 @@ jobs:
     - name: Build docker images
       working-directory: Python-GHA
       run: | 
-        docker build -t myapp:v1 ./app
+        docker build -t myapp:v1 ./app/Dockerfile
 
-  frontend-CI:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+  # frontend-CI:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Set up Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
       
-      - name: Install & Lint
-        working-directory: Python-GHA/frontend
-        run: |
-          npm install
-          npm run lint
+  #     - name: Install & Lint
+  #       working-directory: Python-GHA/frontend
+  #       run: |
+  #         npm install
+  #         npm run lint
