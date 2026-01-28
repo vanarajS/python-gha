@@ -1,0 +1,46 @@
+jenkins:
+  systemMessage: "Jenkins configured using JCasC"
+  numExecutors: 2
+  mode: NORMAL
+
+securityRealm:
+  local:
+    allowsSignup: false
+    users:
+      - id: "admin"
+        password: "admin123"
+
+authorizationStrategy:
+  loggedInUsersCanDoAnything:
+    allowAnonymousRead: false
+
+plugins:
+  - id: git
+  - id: pipeline
+  - id: docker-workflow
+  - id: kubernetes
+  - id: job-dsl
+  - id: configuration-as-code
+  - id: dependency-check-plugin
+  - id: nodejs
+  - id: gitea
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              id: "git-creds"
+              username: "max"
+              password: ${GIT_PASSWORD}
+
+tool:
+  git:
+    installations:
+      - name: "Default Git"
+        home: "/usr/bin/git"
+  nodejs:
+    installations:
+      - name: "Default_nodejs"
+        home: "/usr/bin/git"
+          
