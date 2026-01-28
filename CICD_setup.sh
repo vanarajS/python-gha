@@ -45,6 +45,8 @@ fi
 
 
 export CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml
+export JENKINS_ADMIN_PASSWORD="StrongPasswordHere"
+export GIT_PASSWORD="GitSecretHere"
 
 # Reload systemd & enable Jenkins
 echo "Configuring Jenkins service..."
