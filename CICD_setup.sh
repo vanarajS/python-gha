@@ -43,6 +43,9 @@ if ! rpm -q jenkins &>/dev/null; then
   yum install -y jenkins
 fi
 
+
+export CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml
+
 # Reload systemd & enable Jenkins
 echo "Configuring Jenkins service..."
 systemctl daemon-reload
